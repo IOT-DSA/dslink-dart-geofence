@@ -14,15 +14,13 @@ class Location {
 
     var R = 6378.16; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1);  // deg2rad below
-    var dLon = deg2rad(lon2-lon1);
-    var a = sin(dLat/2) * sin(dLat/2) + cos(deg2rad(lat1)) * cos(deg2rad(lat2)) * sin(dLon/2) * sin(dLon/2);
-    var c = 2 * atan2(sqrt(a), sqrt(1-a));
+    var dLon = deg2rad(lon2 - lon1);
+    var a = sin(dLat / 2) * sin(dLat / 2) + cos(deg2rad(lat1)) * cos(deg2rad(lat2)) * sin(dLon / 2) * sin(dLon / 2);
+    var c = 2 * atan2(sqrt(a), sqrt(1 - a));
     var d = R * c;
     return d;
   }
 }
-
-
 
 double deg2rad(double deg) {
   return deg * (PI / 180);
