@@ -1,16 +1,10 @@
-import "dart:math";
-
-import "package:dslink/client.dart";
-import "package:dslink/responder.dart";
-import "package:dslink/common.dart";
-
+import "package:dslink/dslink.dart";
 import "package:dslink_geofence/geofence.dart";
 import "package:dslink/utils.dart" show Base64;
 
 LinkProvider link;
 
 main(List<String> args) async {
-
   link = new LinkProvider(
     args,
     "Geofence-",
@@ -175,36 +169,4 @@ class DeleteGeofenceNode extends SimpleNode {
     link.provider.removeNode(parent);
     return {};
   }
-}
-
-List<Point<int>> parseGeofence(String input) {
-  var parts = input.split("|").map((it) => it.trim()).toList();
-
-  if (parts.length < 3) {
-    return null;
-  }
-
-  var p = [];
-
-  for (var x in parts) {
-    var l = x.split(",").map((it) => it.trim()).toList();
-    if (l.length != 2) {
-      continue;
-    }
-
-    var lat = num.parse(l[0], (a) => null);
-    var lng = num.parse(l[1], (a) => null);
-
-    if (lat == null || lng == null) {
-      continue;
-    }
-
-    p.add(new Point(lat, lng));
-  }
-
-  if (p.length < 3) {
-    return null;
-  }
-
-  return p;
 }
