@@ -1,5 +1,5 @@
 {
-  "name": "geofence",
+  "name": "dslink-dart-geofence",
   "version": "1.0.0",
   "description": "Geofence DSLink",
   "main": "bin/run.dart",
